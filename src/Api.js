@@ -4,7 +4,7 @@ const SYSTEM_PROMPT = `
 You are an assistant that receives a list of muscle groups that a user has and suggests a workout they could do with some those muscle groups. the workout should be around 30 minutes and include at least 3 different movements. Format your response in markdown to make it easier to render to a web page`;
 
 // API key for Hugging Face
-const hf = new HfInference("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");
+const hf = new HfInference(import.meta.env.VITE_HF_API_KEY);
 
 export async function getExerciseRoutine(muscle) {
   const exercise = muscle.join(", ");
