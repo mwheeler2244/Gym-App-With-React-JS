@@ -4,143 +4,164 @@
 
 body {
   margin: 0;
-  font-family: "Inter", sans-serif;
-  background-color: #f7fafc; /* Light neutral background */
-  color: #2d3748; /* Dark gray text for good readability */
+  font-family: Inter, sans-serif;
+  background-color: #fafaf8;
 }
 
-header {
+.hero-header {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: 11px;
   height: 80px;
-  background-color: #4f87e5; /* Soft blue background */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 0 1px 4px rgba(0, 0, 0, 0.05); /* Modern soft shadows */
+  background-color: white;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1),
+    0px 1px 2px 0px rgba(0, 0, 0, 0.06);
 }
 
-header > img {
+.hero-header > img {
   width: 50px;
-  height: auto;
 }
 
-header > h1 {
-  font-weight: 600;
-  font-size: 1.25rem;
-  color: #ffffff; /* White text for contrast */
+.hero-header > h1 {
+  font-weight: 400;
 }
 
 main {
-  padding: 30px 20px;
+  padding: 30px 30px 10px;
 }
 
-.fa-solid {
-  font-size: 1.5rem;
-}
-
-.add-ingredient-form {
+.add-muscle-group-form {
   display: flex;
   justify-content: center;
-  gap: 15px;
-  margin-bottom: 20px;
+  gap: 12px;
+  height: 38px;
 }
 
-.add-ingredient-form > input {
-  border-radius: 8px;
-  border: 1px solid #cbd5e0; /* Soft gray border */
-  padding: 12px 16px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+.add-muscle-group-form > input {
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  padding: 9px 13px;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
   flex-grow: 1;
-  min-width: 180px;
+  min-width: 150px;
   max-width: 400px;
-  font-size: 1rem;
-  transition: all 0.2s ease-in-out;
 }
 
-.add-ingredient-form > input:focus {
-  border-color: #4f87e5; /* Blue border on focus */
-  box-shadow: 0 4px 10px rgba(79, 135, 229, 0.3); /* Highlight on focus */
-  outline: none;
-}
-
-.add-ingredient-form button {
-  font-family: "Inter", sans-serif;
-  border-radius: 8px;
+.add-muscle-group-form > button {
+  font-family: Inter, sans-serif;
+  border-radius: 6px;
   border: none;
-  background: #fa903a; /* Soft teal background */
-  color: #ffffff; /* White text */
-  width: 160px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  padding: 12px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  background-color: #141413;
+  color: #fafaf8;
+  width: 150px;
+  font-size: 0.875rem;
+  font-weight: 500;
 }
 
-button:hover {
-  background-color: #2688b8; /* Darker teal on hover */
-}
-
-.add-ingredient-form > button::before {
+.add-muscle-group-form > button::before {
   content: "+";
-  margin-right: 8px;
+  margin-right: 5px;
 }
 
-ul.ingredients-list {
-  margin-bottom: 40px;
+.muscle-groups-list {
+  margin-bottom: 48px;
 }
 
-ul.ingredients-list > li {
-  color: #4a5568; /* Darker gray for better readability */
+.muscle-groups-list > li {
+  color: #475467;
   line-height: 28px;
-  font-size: 1rem;
-  padding: 8px 0;
 }
 
-.get-recipe-container {
+.get-exercise-plan-container {
   display: flex;
+  gap: 0.75rem;
   justify-content: space-between;
   align-items: center;
-  border-radius: 10px;
-  background: linear-gradient(
-    135deg,
-    #e0f7fa,
-    #b3e5fc
-  ); /* Soft gradient background */
-  padding: 15px 30px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease-in-out;
+  border-radius: 8px;
+  background: #f0efeb;
+  padding: 10px;
 }
 
-.get-recipe-container:hover {
-  transform: translateY(-5px); /* Slight lift on hover for depth */
-}
-
-.get-recipe-container h3 {
+.get-exercise-plan-container h3 {
   font-size: 1.125rem;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 24px;
-  color: #0277bd; /* Dark blue heading */
 }
 
-.get-recipe-container p {
-  color: #607d8b; /* Muted gray-blue text */
+.get-exercise-plan-container p {
+  color: #6b7280;
   font-size: 0.875rem;
   line-height: 20px;
 }
 
-.get-recipe-container button {
+.get-exercise-plan-container button {
   border: none;
-  border-radius: 8px;
-  background: #fa903a; /* Light blue background */
-  color: #ffffff;
-  padding: 10px 25px;
-  font-family: "Inter", sans-serif;
+  border-radius: 6px;
+  background: #d17557;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+  color: #fafaf8;
+  padding: 9px 17px;
+  font-family: Inter, sans-serif;
   font-size: 0.875rem;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
 
-.get-recipe-container button:hover {
-  background: #42a5f5; /* Slightly darker blue on hover */
+.exercise-plan-container {
+  color: #475467;
+  line-height: 28px;
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+
+.exercise-plan-container {
+  background-color: #f7fafc;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 30px auto;
+}
+
+.exercise-plan-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #141413;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.exercise-plan-content {
+  font-size: 1rem;
+  color: #4a5568;
+  line-height: 1.5;
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+/* Add some spacing for larger text content */
+.exercise-plan-content h3 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+.exercise-plan-content p {
+  margin-bottom: 12px;
+}
+.muscle-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 10px;
+  list-style: circle;
+}
+
+.muscle-list button {
+  background-color: black;
+  padding: 0.25rem;
 }

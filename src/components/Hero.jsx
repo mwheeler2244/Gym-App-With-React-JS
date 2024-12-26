@@ -1,51 +1,65 @@
-import { useState, useRef, useEffect } from "react";
-import Recipe from "./Recipe";
-import Ingredients from "./Ingredients";
+import { useState, useEffect } from "react";
+import ExercisePlan from "./ExercisePlan";
+import MuscleGroups from "./MuscleGroups"; // No changes here
+import { getExerciseRoutine } from "../Api";
 
 function Hero() {
-  const [ingredients, setIngredients] = useState([]);
+  const [muscleGroups, setMuscleGroups] = useState([]);
   const [userInput, setUserInput] = useState("");
-  const [displayRecipe, setDisplayRecipe] = useState(false);
-  const recipeRef = useRef(null);
-  console.log(recipeRef);
-
-  useEffect(() => {
-    if (displayRecipe && recipeRef.current) {
-      recipeRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [displayRecipe]);
+  const [exercisePlan, setExercisePlan] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
-    setIngredients((prev) => [...prev, userInput]);
-    setUserInput("");
+    if (userInput.trim() !== "") {
+      setMuscleGroups((prev) => [...prev, userInput]);
+      setUserInput("");
+    }
   }
 
-  function handleRecipe() {
-    setDisplayRecipe((prev) => !prev);
+  async function handleGeneratePlan() {
+    setIsLoading(true);
+
+    try {
+      const plan = await getExerciseRoutine(muscleGroups);
+      setExercisePlan(plan);
+    } catch (error) {
+      console.error("Error generating exercise plan:", error.message);
+      setExercisePlan("Failed to generate an exercise plan. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
-    <main>
-      <form onSubmit={handleSubmit} className="add-ingredient-form">
+    <main className="hero">
+      <form onSubmit={handleSubmit} className="add-muscle-group-form">
         <input
           value={userInput}
           onChange={(e) => setUserInput(e.target.value)}
           type="text"
-          placeholder="e.g. tomatoes"
-          name="ingredient"
+          placeholder="e.g. chest, triceps"
+          name="muscleGroup"
+          className="input-muscle-group"
         />
-        <button>Add Ingredient</button>
+        <button className="add-muscle-group-button">Add Muscle Group</button>
       </form>
-      {ingredients.length > 0 && (
-        <Ingredients
-          ref={recipeRef}
-          ingredients={ingredients}
-          handleRecipe={handleRecipe}
+
+      {muscleGroups.length > 0 && (
+        <MuscleGroups
+          muscleGroups={muscleGroups}
+          setMuscleGroups={setMuscleGroups}
+          handleGeneratePlan={handleGeneratePlan}
+          className="muscle-groups"
         />
       )}
 
-      {displayRecipe && <Recipe />}
+      {isLoading && (
+        <p className="loading-message">Loading your exercise plan...</p>
+      )}
+      {exercisePlan && (
+        <ExercisePlan exercisePlan={exercisePlan} className="exercise-plan" />
+      )}
     </main>
   );
 }

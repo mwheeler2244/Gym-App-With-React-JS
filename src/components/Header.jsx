@@ -1,7 +1,7 @@
 export default function Header() {
   return (
-    <header>
-      <i className="fa-solid fa-utensils"></i> <h1>Build A Meal</h1>
+    <header style={{ textAlign: "center" }}>
+      <i className="fa-solid fa-dumbbell"></i> <h1>Build Your Daily Workout</h1>
     </header>
   );
 }
